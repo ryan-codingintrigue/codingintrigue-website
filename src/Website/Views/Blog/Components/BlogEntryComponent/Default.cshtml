@@ -1,0 +1,32 @@
+﻿@model Website.Models.Blog.Entry
+<article>
+    <header class="entry-header">
+        <h2 class="entry-title">
+            <a href="@Url.Action("Detail", new { id = Model.Id })">
+                @Model.Title
+            </a>
+        </h2>
+
+        <div class="entry-meta">
+            <span class="byline">
+                <i class="fa fa-user"></i>
+                <span class="author vcard">
+                    <a class="url fn n" href="http://www.codingintrigue.co.uk/?author=1">ryang</a>
+                </span>
+            </span>
+            @if (Model.Date.HasValue)
+            {
+                <span class="posted-on">
+                <i class="fa fa-calendar"></i>
+                <a href="http://www.codingintrigue.co.uk/?p=30" rel="bookmark">
+                    <time class="entry-date published" datetime="2014-10-19T09:30:24+00:00">@Model.Date.Value.ToString("D")</time>
+                </a>
+            </span>
+            }
+        </div>
+    </header>
+
+    <div class="entry-content">
+        @Html.Raw(Model.Markdown)
+    </div>
+</article>

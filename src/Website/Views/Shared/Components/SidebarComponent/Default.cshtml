@@ -1,0 +1,15 @@
+﻿@using System.Threading.Tasks
+@using BusinessLogic
+@model IEnumerable<Website.Models.Blog.Entry>
+
+<aside id="recent-posts-2" class="widget widget_recent_entries">
+    <h3 class="widget-title">Recent Posts</h3>
+    <ul>
+        @foreach (var entry in Model)
+        {
+            <li>
+                <a href="@Url.Action("Detail", "Blog", new { id = entry.Id })">@entry.Title</a>
+            </li>
+        }
+    </ul>
+</aside>

@@ -1,0 +1,8 @@
+﻿@using Website.ViewComponents
+@model Website.Models.Blog.Entry
+
+@{
+    ViewBag.Title = Model.Title;
+}
+
+@(Component.Invoke<BlogEntryComponent>(Model))

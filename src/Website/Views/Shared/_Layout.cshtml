@@ -1,0 +1,84 @@
+﻿@using Website.ViewComponents
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>Coding Intrigue</title>
+    <link rel="stylesheet" type="text/css" media="all" href="~/Content/styles/font-awesome.min.css">
+	<link rel="stylesheet" type="text/css" media="all" href="~/Content/styles/base.css">
+	<link rel="stylesheet" type="text/css" media="all" href="~/Content/styles/codingintrigue.css">
+    <link href="~/Content/styles/style.css" rel="stylesheet">
+	<script src="https://google-code-prettify.googlecode.com/svn/loader/run_prettify.js"></script>
+	<script src="/Content/scripts/system.js"></script>
+	<script>
+		System.baseURL = "/Content/scripts/";
+		System.import("./shared");
+	</script>
+	<link rel="stylesheet" type="text/css" media="all" href="~/Content/styles/github.css">
+</head>
+<body>
+    <div class="site-top">
+        <div class="clearfix container">
+            <nav class="site-menu" role="navigation">
+                <div class="menu-toggle"><i class="fa fa-bars"></i></div>
+                <div class="menu-text"></div>
+                <div class="clearfix menu-bar">
+                    <ul>
+                        <li class="current_page_item"><a href="@Url.Action("Index")">Home</a></li>
+                        <li class="page_item page-item-21"><a href="@Url.Action("Index", "AboutMe")">About Me</a></li>
+                    </ul>
+                </div>
+            </nav>
+
+            <div class="site-search">
+                <div class="search-toggle"><i class="fa fa-search"></i></div>
+                <div class="search-expand">
+	                <div class="search-expand-inner">
+		                @using (Html.BeginForm("Search", "Blog", null, FormMethod.Post, new { @class = "search-form", role = "search" }))
+						{
+							<div class="form-group">
+								<input type="search" class="form-control" placeholder="Search" value="" name="query" title="Search for:">
+							</div>
+							<div class="form-submit">
+								<button type="submit" class="search-submit"><i class="fa fa-search"></i></button>
+							</div>
+						}
+	                </div>
+                </div>
+                <!-- .site-search -->
+            </div>
+        </div>
+        <!-- .site-top -->
+    </div>
+
+    <header class="site-header" role="banner">
+        <div class="clearfix container">
+            <div class="site-branding">
+                <h1 class="site-title">
+                    <a href="@Url.Action("Index")" rel="home">Coding Intrigue</a>
+                </h1>
+                <div class="site-description">The day-to-day ramblings of a frontend developer</div>
+            </div>
+        </div>
+        <!-- .site-header -->
+    </header>
+
+    <div class="site-main">
+        <div class="clearfix container">
+            <div class="row">
+                <div class="col-md-8 content-area" role="main">
+                    @RenderBody()
+                </div>
+
+                <div class="col-md-4 site-sidebar" role="complementary">
+                    @(await Component.InvokeAsync<SidebarComponent>())
+                </div>
+            </div>
+        </div>
+</body>
+</html>

@@ -1,0 +1,11 @@
+﻿@using Website.Models.Blog
+@using Website.ViewComponents
+@model EntryList
+
+@if (Model != null)
+{
+    foreach (var entry in Model.Entries)
+    {
+        @(Component.Invoke<BlogEntryComponent>(entry))
+    }
+}

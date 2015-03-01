@@ -1,0 +1,10 @@
+﻿@model Website.Models.About.About
+
+@{
+	ViewBag.Title = "About Me";
+	Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>@Model.Title</h2>
+
+@Html.Raw(Model.Body)
